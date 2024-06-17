@@ -73,7 +73,6 @@ def order_detail(request, pedido_id):
 
 
 def index(request):
-<<<<<<< HEAD
     return render(request, 'menu/index.html')
 
 
@@ -85,6 +84,3 @@ class MenuItemListCreateAPIView(generics.ListCreateAPIView):
 class MenuItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-=======
-    return render(request, 'menu/index.html')
->>>>>>> 7b756cc6fbbe810d58ae9044b581dd7962d72066
