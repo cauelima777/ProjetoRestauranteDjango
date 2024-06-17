@@ -13,20 +13,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/stylemenu_delete.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylemenu_detail.css' %}">
     <title>Deletar Item</title>
     <style>
         body {
             background-image: url("{% static 'css/imagens/FundoRestaurantesV3.png' %}");
 
         }
-
+        
+        
         
     </style>
 </head>
 <body>
     <h1>Deletar Item</h1>
     <p>Tem certeza que deseja deletar "{{ item.name }}"?</p>
+    
+    
     <form action="{% url 'menu_delete' item.id %}" method="post">
         {% csrf_token %}
         <button type="submit">Deletar</button>
