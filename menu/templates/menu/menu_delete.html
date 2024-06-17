@@ -23,15 +23,12 @@
     </style>
 </head>
 <body>
-    <div class="menu-excluir">
-            <h1 id="estilo-titulo">Deletar Item</h1>
-            <p id=>Tem certeza que deseja deletar "{{ item.name }}"?</p>
-            <form action="{% url 'menu_delete' item.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Deletar</button>
-            </form>
-            <br>
-            <a href="{% url 'menu_list' %}"><button class="btn btn-danger">Cancelar</button></a>
-    </div>
+    <h1>Deletar Item</h1>
+    <p>Tem certeza que deseja deletar "{{ item.name }}"?</p>
+    <form action="{% url 'menu_delete' item.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Deletar</button>
+    </form>
+    <a href="{% url 'menu_list' %}"><button>Cancelar</button></a>
 </body>
 </html>
