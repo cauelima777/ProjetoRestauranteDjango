@@ -4,23 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funcionários</title>
+    <title>Comandas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fafafa;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+        a button {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Comandas</h1>
-    <ul>
-        {% for pedido in pedidos %}
-        <li>
-            Mesa: {{ pedido.mesa }}
-            <form action="{% url 'delete_order' pedido.id %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Excluir</button>
-            </form>
-            <a href="{% url 'order_detail' pedido.id %}">
-                <button type="button">Visualizar Pedido</button>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>Comandas</h1>
+        <ul>
+            {% for pedido in pedidos %}
+            <li>
+                <div>
+                    <strong>Mesa:</strong> {{ pedido.mesa }} - <strong>Item:</strong> {{ pedido.menu_item.name }}
+                </div>
+                <div class="buttons">
+                    <form action="{% url 'delete_order' pedido.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Excluir</button>
+                    </form>
+                    <a href="{% url 'order_detail' pedido.id %}">
+                        <button type="button">Visualizar Pedido</button>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

@@ -1,5 +1,8 @@
 # menu/views.py
 from django.shortcuts import render, get_object_or_404, redirect
+from rest_framework import generics
+
+from menu.serializers import MenuItemSerializer
 from .models import MenuItem, Pedido
 
 def menu_list(request):
@@ -66,3 +69,18 @@ def delete_order(request, order_id):
 def order_detail(request, pedido_id):
     pedido = get_object_or_404(Pedido, pk=pedido_id)
     return render(request, 'menu/order_detail.html', {'pedido': pedido})
+
+
+
+def index(request):
+    return render(request, 'menu/index.html')
+
+
+
+class MenuItemListCreateAPIView(generics.ListCreateAPIView):
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
+
+class MenuItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
