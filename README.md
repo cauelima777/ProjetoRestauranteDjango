@@ -1,3 +1,6 @@
+Projeto realizado pelos alunos: Cauê Souza de Lima e Kauan Luciano Correia Alencar.
+
+
 ![Cliente_Cardápio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/8e10b437-f081-4b3a-afeb-d27eafcd2afd)
 
 
