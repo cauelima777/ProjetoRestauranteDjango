@@ -13,8 +13,16 @@ urlpatterns = [
     path('deletar/<int:order_id>/', views.delete_order, name='delete_order'),
     path('visualizar/<int:pedido_id>/', views.order_detail, name='order_detail'), 
     
+    
+    
+    #Apis
+    
     path('api/menuitems/', views.MenuItemListCreateAPIView.as_view(), name='api_menuitem_list_create'),
     path('api/menuitems/<int:pk>/', views.MenuItemRetrieveUpdateDestroyAPIView.as_view(), name='api_menuitem_detail'),
+
+
+
+    #Comandas
 
     path('comandas/', views.order_list, name='order_list'),  
 
