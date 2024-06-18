@@ -1,3 +1,4 @@
+<!-- templates/menu/order_list.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,13 +89,13 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" >
         <h1>Comandas</h1>
         <ul>
             {% for pedido in pedidos %}
             <li>
-                <div>
-                    <strong>Mesa:</strong> {{ pedido.mesa }} - <strong>Item:</strong> {{ pedido.menu_item.name }}
+                <div style="width: 40%;">
+                    <strong>Mesa:</strong> {{ pedido.mesa }} - <strong>Item:</strong> {{ pedido.menu_item.name }} 
                 </div>
                 <div class="buttons">
                     <form action="{% url 'delete_order' pedido.id %}" method="post" style="display:inline;">

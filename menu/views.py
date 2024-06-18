@@ -42,16 +42,17 @@ def cliente_list(request):
 
 def make_order(request):
     if request.method == 'POST':
+        quantidade = request.POST.get('quantidade')
         item_id = request.POST.get('menu_item')
         mesa = request.POST.get('mesa')
-        quantidade = request.POST.get('quantidade')
         item = get_object_or_404(MenuItem, pk=item_id)
-        Pedido.objects.create(menu_item=item, mesa=mesa)
+        Pedido.objects.create(menu_item=item, quantidade=quantidade, mesa=mesa)
         return redirect('cliente_list')
     else:
         menu_items = MenuItem.objects.all()
         return render(request, 'menu/make_order.html', {'menu_items': menu_items})
-
+    
+    
 def order_list(request):
     pedidos = Pedido.objects.all()
     return render(request, 'menu/order_list.html', {'pedidos': pedidos})
