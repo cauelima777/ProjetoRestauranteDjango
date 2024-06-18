@@ -14,6 +14,6 @@ class Pedido(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     quantidade = models.PositiveBigIntegerField(default=1)
-
+    concluido = models.BooleanField(default=False)
     def __str__(self):
         return f"Pedido de {self.menu_item.name} em {self.created_at}"

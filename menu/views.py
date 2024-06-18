@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework import generics
 
-from menu.serializers import MenuItemSerializer
+from menu.serializers import MenuItemSerializer, PedidoSerializer
 from .models import MenuItem, Pedido
 
 def menu_list(request):
@@ -76,7 +76,24 @@ def index(request):
     return render(request, 'menu/index.html')
 
 
+def marcar_como_concluido(request, pk):
+    pedido = get_object_or_404(Pedido, pk=pk)
+    pedido.concluido = True
+    pedido.save()
+    return redirect('order_list')
 
+
+def desfazer_conclusao(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    pedido.concluido = False
+    pedido.save()
+    return redirect('order_list')
+
+
+
+
+
+# API views
 class MenuItemListCreateAPIView(generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
@@ -84,3 +101,11 @@ class MenuItemListCreateAPIView(generics.ListCreateAPIView):
 class MenuItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+
+class PedidoListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
+class PedidoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer

@@ -17,4 +17,8 @@ urlpatterns = [
     path('api/menuitems/<int:pk>/', views.MenuItemRetrieveUpdateDestroyAPIView.as_view(), name='api_menuitem_detail'),
 
     path('comandas/', views.order_list, name='order_list'),  
+
+    path('marcar_como_concluido/<int:pk>/', views.marcar_como_concluido, name='marcar_como_concluido'),
+    path('comandas/desfazer_conclusao/<int:pedido_id>/', views.desfazer_conclusao, name='desfazer_conclusao'),
+
 ]

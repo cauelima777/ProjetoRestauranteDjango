@@ -1,4 +1,3 @@
-<!-- templates/menu/order_list.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,9 +61,29 @@
         .delete-button:hover {
             background-color: #c82333;
         }
+        .concluir-button {
+            background-color: #28a745;
+        }
+        .concluir-button:hover {
+            background-color: #218838;
+        }
+        .desfazer-button {
+            background-color: #ffc107;
+        }
+        .desfazer-button:hover {
+            background-color: #e0a800;
+        }
         a button {
             text-decoration: none;
             color: white;
+        }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+        }
+        .badge.bg-success {
+            background-color: #28a745;
         }
     </style>
 </head>
@@ -85,6 +104,18 @@
                     <a href="{% url 'order_detail' pedido.id %}">
                         <button type="button">Visualizar Pedido</button>
                     </a>
+                    {% if not pedido.concluido %}
+                    <form action="{% url 'marcar_como_concluido' pedido.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="concluir-button">Marcar como Concluído</button>
+                    </form>
+                    {% else %}
+                    <form action="{% url 'desfazer_conclusao' pedido.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="desfazer-button">Desfazer Conclusão</button>
+                    </form>
+                    <span class="badge bg-success">Concluído</span>
+                    {% endif %}
                 </div>
             </li>
             {% endfor %}
