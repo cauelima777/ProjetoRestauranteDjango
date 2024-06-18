@@ -45,6 +45,7 @@ def menu_delete(request, item_id):
         return redirect('menu_list')
     return render(request, 'menu/menu_delete.html', {'item': item})
 
+#Listar o itens diponíveis no cardápio para o cliente pedir
 def cliente_list(request):
     menu_items = MenuItem.objects.all()
     return render(request, 'menu/cliente_list.html', {'menu_items': menu_items})
