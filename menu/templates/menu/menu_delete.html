@@ -10,30 +10,78 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/stylemenu_detail.css' %}">
     <title>Deletar Item</title>
     <style>
         body {
             background-image: url("{% static 'css/imagens/FundoRestaurantesV3.png' %}");
-
+            background-size: cover;
+            background-position: center;
+            font-family: 'Lora', serif;
+            color: #030202;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
-        
-        
-        
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        form, .cancel-button {
+            display: inline-block;
+            margin: 0.5em;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .cancel-button button {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        .cancel-button button:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
     <h1>Deletar Item</h1>
     <p>Tem certeza que deseja deletar "{{ item.name }}"?</p>
-    
-    
     <form action="{% url 'menu_delete' item.id %}" method="post">
         {% csrf_token %}
         <button type="submit">Deletar</button>
     </form>
-    <a href="{% url 'menu_list' %}"><button>Cancelar</button></a>
+    <div class="cancel-button">
+        <a href="{% url 'menu_list' %}"><button type="button">Cancelar</button></a>
+    </div>
 </body>
 </html>
