@@ -1,32 +1,27 @@
 Projeto realizado pelos alunos: Cauê Souza de Lima e Kauan Luciano Correia Alencar.
 
 
-![Cliente_Cardápio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/8e10b437-f081-4b3a-afeb-d27eafcd2afd)
+![Gerência](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/a28f9d33-16d0-4cfe-81ce-45a0647fabd6)
 
 
 
-
-![Comandas](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/2b9774cd-c5d2-4f4e-886d-7a0c137dd8b0)
-
+![Gerência_deletar_itemcardapio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/0aed6c0d-a19f-42fd-8c34-53b84412ccf7)
 
 
-
-![Detalhes_comanda](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/970c1982-8cc7-4bea-9909-7952ff8dc368)
-
+![Gerência_editar_cardápio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/e9e37b09-d4b2-4f51-86a2-774cc6a919d9)
 
 
-
-![FazerPedido_Cliente](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/9b4b6f76-e39f-437e-bbbd-3c9712b15413)
+![FazerPedido](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/b6bda4d8-855e-43ca-9431-e308b40944a5)
 
 
 
-![Gerência](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/bbb6f493-8d74-45b4-8682-a35eef04ee1b)
+![FazerPedido_Cliente](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/72f55d08-c941-481e-afd3-d94ffb20a29d)
 
 
 
-
-![Gerência_deletar_itemcardapio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/16a180fa-2d34-40d8-8d23-38ed675e8a4c)
-
+![Comandas](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/84845007-38cd-4010-8c18-a65fa79e0910)
 
 
-![Gerência_editar_cardápio](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/3aef26c3-086d-4ea0-abdf-d19a0aa80744)
+
+![Detalhes_comanda](https://github.com/cauelima777/ProjetoRestauranteDjango/assets/103838608/7dccea86-81e9-41ef-b4d8-bb83cf66ebaa)
+
