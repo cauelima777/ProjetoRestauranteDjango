@@ -17,23 +17,67 @@
     <style>
         body {
             background-image: url("{% static 'css/imagens/FundoRestaurantesV3.png' %}");
-
+        }
+        .menu-listar {
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #titulo-gerencia {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn-warning, .btn-danger {
+            margin-right: 5px;
+        }
+        .link-info {
+            display: block;
+            margin-top: 10px;
+            text-align: right;
         }
     </style>
 </head>
 <body>
-    <div class="menu-listar" style=" width: 80%; height: 100%;" >
+    <div class="menu-listar">
         <h1 id="titulo-gerencia">Gerência</h1>
-        <ul>
-        {% for item in menu_items %}
-        <li>{{ item.name }} - {{ item.description }} - R${{ item.price }}
-            <a href="{% url 'menu_edit' item.id %}"><button class="btn btn-warning">Editar</button></a>
-            <a href="{% url 'menu_delete' item.id %}"><button  class="btn btn-danger">Delete</button></a>
-        </li>
-        <br>
-        {% endfor %}
-        </ul>
-        <a href="{% url 'menu_create' %}" class="link-info" >Adicionar item ao cardápio</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in menu_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>R${{ item.price }}</td>
+                    <td>
+                        <a href="{% url 'menu_edit' item.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'menu_delete' item.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'menu_create' %}" class="link-info">Adicionar item ao cardápio</a>
     </div>
 </body>
 </html>

@@ -18,6 +18,7 @@
         }
         h1 {
             color: #333;
+            text-align: center;
         }
         .container {
             background-color: #fff;
@@ -25,21 +26,20 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 80%;
-            max-width: 600px;
+            max-width: 800px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        li {
-            background-color: #fafafa;
-            margin: 10px 0;
-            padding: 10px;
+        th, td {
             border: 1px solid #ddd;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
         .buttons {
             display: flex;
@@ -89,38 +89,53 @@
     </style>
 </head>
 <body>
-    <div class="container" >
+    <div class="container">
         <h1>Comandas</h1>
-        <ul>
-            {% for pedido in pedidos %}
-            <li>
-                <div style="width: 40%;">
-                    <strong>Mesa:</strong> {{ pedido.mesa }} - <strong>Item:</strong> {{ pedido.menu_item.name }} 
-                </div>
-                <div class="buttons">
-                    <form action="{% url 'delete_order' pedido.id %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="delete-button">Excluir</button>
-                    </form>
-                    <a href="{% url 'order_detail' pedido.id %}">
-                        <button type="button">Visualizar Pedido</button>
-                    </a>
-                    {% if not pedido.concluido %}
-                    <form action="{% url 'marcar_como_concluido' pedido.id %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="concluir-button">Marcar como Concluído</button>
-                    </form>
-                    {% else %}
-                    <form action="{% url 'desfazer_conclusao' pedido.id %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="desfazer-button">Desfazer Conclusão</button>
-                    </form>
-                    <span class="badge bg-success">Concluído</span>
-                    {% endif %}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mesa</th>
+                    <th>Item</th>
+                    <th>Ações</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.mesa }}</td>
+                    <td>{{ pedido.menu_item.name }}</td>
+                    <td>
+                        <div class="buttons">
+                            <form action="{% url 'delete_order' pedido.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-button">Excluir</button>
+                            </form>
+                            <a href="{% url 'order_detail' pedido.id %}">
+                                <button type="button">Visualizar Pedido</button>
+                            </a>
+                            {% if not pedido.concluido %}
+                            <form action="{% url 'marcar_como_concluido' pedido.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="concluir-button">Marcar como Concluído</button>
+                            </form>
+                            {% else %}
+                            <form action="{% url 'desfazer_conclusao' pedido.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="desfazer-button">Desfazer Conclusão</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        {% if pedido.concluido %}
+                        <span class="badge bg-success">Concluído</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
